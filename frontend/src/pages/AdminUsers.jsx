@@ -47,7 +47,7 @@ const AdminUsers = () => {
 
   return (
     <div className="space-y-6">
-      <div className="glass-card p-6 flex items-center justify-between">
+      <div className="bg-white p-6 flex items-center justify-between rounded-radius shadow-sm border border-slate-200">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
             <Users size={24} />
@@ -59,39 +59,39 @@ const AdminUsers = () => {
         </div>
       </div>
 
-      <div className="glass-card overflow-hidden">
+      <div className="bg-white overflow-hidden rounded-radius shadow-sm border border-slate-200">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-white/5 border-b border-white/10">
-                <th className="px-6 py-4 text-xs font-semibold opacity-50 uppercase tracking-widest">User Details</th>
-                <th className="px-6 py-4 text-xs font-semibold opacity-50 uppercase tracking-widest">Joined</th>
-                <th className="px-6 py-4 text-xs font-semibold opacity-50 uppercase tracking-widest">Role</th>
-                <th className="px-6 py-4 text-xs font-semibold opacity-50 uppercase tracking-widest text-right">Actions</th>
+              <tr className="bg-slate-50 border-b border-slate-200">
+                <th className="px-6 py-4 text-xs font-semibold text-slate-600 uppercase tracking-widest">User Details</th>
+                <th className="px-6 py-4 text-xs font-semibold text-slate-600 uppercase tracking-widest">Joined</th>
+                <th className="px-6 py-4 text-xs font-semibold text-slate-600 uppercase tracking-widest">Role</th>
+                <th className="px-6 py-4 text-xs font-semibold text-slate-600 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {users.map(u => (
-                <tr key={u.id} className="hover:bg-white/5 transition-colors group">
+                <tr key={u.id} className="hover:bg-slate-50 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-500 font-bold uppercase">
                         {u.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-bold">{u.name}</p>
-                        <p className="text-xs opacity-50 flex items-center gap-1">
+                        <p className="font-bold text-slate-900">{u.name}</p>
+                        <p className="text-xs text-slate-500 flex items-center gap-1 font-medium uppercase">
                           <Mail size={12} /> {u.email}
                         </p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm opacity-60">
+                  <td className="px-6 py-4 text-sm text-slate-500 font-medium">
                     {format(new Date(u.createdAt), 'MMM dd, yyyy')}
                   </td>
                   <td className="px-6 py-4">
                     <select 
-                      className="bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-3 py-1.5 text-xs font-bold focus:ring-2 focus:ring-primary/50 cursor-pointer"
+                      className="bg-slate-100 text-slate-900 border-none rounded-lg px-3 py-1.5 text-xs font-bold focus:ring-2 focus:ring-primary/50 cursor-pointer hover:bg-slate-200 transition-colors"
                       value={u.role}
                       onChange={(e) => handleRoleChange(u.id, e.target.value)}
                     >

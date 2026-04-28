@@ -27,6 +27,11 @@ const getTransactions = async (req, res, next) => {
         skip: parseInt(skip),
         take: parseInt(limit),
         orderBy: { date: 'desc' },
+        include: {
+          user: {
+            select: { name: true, email: true }
+          }
+        }
       }),
       prisma.transaction.count({ where }),
     ]);
