@@ -14,7 +14,7 @@ const app = express();
 // Security Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL || 'https://fin-track-pi-self.vercel.app/',
   credentials: true
 }));
 
