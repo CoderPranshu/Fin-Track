@@ -13,9 +13,15 @@ const app = express();
 
 // Security Middleware
 app.use(helmet());
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+// Remove trailing slash if present for CORS consistency
+const normalizedOrigin = frontendUrl.endsWith('/') ? frontendUrl.slice(0, -1) : frontendUrl;
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://fin-track-pi-self.vercel.app/',
-  credentials: true
+  origin: [normalizedOrigin, `${normalizedOrigin}/`],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Rate Limiting
